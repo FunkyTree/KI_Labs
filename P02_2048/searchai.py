@@ -1,8 +1,11 @@
 import random
 import game
 import sys
+<<<<<<< HEAD
 from multiprocessing import Pool
 import itertools
+=======
+>>>>>>> 510ae3ec61ccfc7d4abb73744119d89f5f4ad5a0
 
 # Author:      chrn (original by nneonneo)
 # Date:        11.11.2016
@@ -17,6 +20,7 @@ def find_best_move(board):
     bestmove = -1
     UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
     move_args = [UP,DOWN,LEFT,RIGHT]
+<<<<<<< HEAD
     pool = Pool()
     
     result = pool.map(func_star, itertools.izip(move_args, itertools.repeat(board)))
@@ -27,6 +31,15 @@ def find_best_move(board):
         print(result[m])
     pool.close()
     pool.join()
+=======
+    
+    result = [score_toplevel_move(i, board) for i in range(len(move_args))]
+    
+    bestmove = result.index(max(result))
+    for m in move_args:
+        print(m)
+        print(result[m])
+>>>>>>> 510ae3ec61ccfc7d4abb73744119d89f5f4ad5a0
     
     return bestmove
     
@@ -70,6 +83,7 @@ def board_equals(board, newboard):
     Check if two boards are equal
     """
     return  (newboard == board).all()  
+<<<<<<< HEAD
     
 def func_star(a_b):
     """
@@ -77,3 +91,5 @@ def func_star(a_b):
 	Needed to handle more than one parameter.
     """
     return score_toplevel_move (*a_b)
+=======
+>>>>>>> 510ae3ec61ccfc7d4abb73744119d89f5f4ad5a0

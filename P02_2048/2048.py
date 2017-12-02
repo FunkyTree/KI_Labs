@@ -11,8 +11,12 @@
 from __future__ import print_function
 
 import time
+<<<<<<< HEAD
 import os
 import searchai    #for task 3
+=======
+import searchai #for task 3
+>>>>>>> 510ae3ec61ccfc7d4abb73744119d89f5f4ad5a0
 import heuristicai #for task 2
 
 def print_board(m):
@@ -38,7 +42,11 @@ def to_score(m):
 
 def find_best_move(board):
     return heuristicai.find_best_move(board)
+<<<<<<< HEAD
     #return searchai.find_best_move(board)
+=======
+    #return searchai_SOLUTION.find_best_move(board)
+>>>>>>> 510ae3ec61ccfc7d4abb73744119d89f5f4ad5a0
 
 def movename(move):
     return ['up', 'down', 'left', 'right'][move]

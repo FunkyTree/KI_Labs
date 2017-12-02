@@ -1,7 +1,12 @@
 import random
 import game
+<<<<<<< HEAD
 import math
 import sys
+=======
+import sys
+import time
+>>>>>>> 510ae3ec61ccfc7d4abb73744119d89f5f4ad5a0
 import numpy as np
 
 # Author:				chrn (original by nneonneo)
@@ -11,6 +16,7 @@ import numpy as np
 UP, DOWN, LEFT, RIGHT = 0, 1, 2, 3
 
 def find_best_move(board):
+<<<<<<< HEAD
     bestmove = -1    
 	
     moves = [game.merge_up, game.merge_down, game.merge_left, game.merge_right]
@@ -102,6 +108,54 @@ def areListsEqual(a, b):
     for i in range(len(a)):
         for j in range(len(b)):
             if (a[i][j] != b[i][j]):
+=======
+    bestmove = -1
+	
+    moves = [game.merge_up, game.merge_down, game.merge_left, game.merge_right]
+	
+    goal = []
+    if (sum(sum(board)) % 20 < 2):
+        for i in range(0,4):
+            goal.append([2**((4*i)+j+1) for j in range(0,4)])
+    
+        goal[3] = goal[3][::-1]
+        goal[1] = goal[1][::-1]
+    else:
+        for i in range(4):
+            goal.append([2**(i+j) for j in range(4)])
+    
+	
+    u = game.merge_up(board)
+    d = game.merge_down(board)
+    r = game.merge_right(board)
+    l = game.merge_left(board)
+	
+    U = [x * y for x,y in zip(goal, u)]
+    D = [x * y for x,y in zip(goal, d)]
+    R = [x * y for x,y in zip(goal, r)]
+    L = [x * y for x,y in zip(goal, l)]
+    
+    sumU = sum(sum(U))
+    sumD = sum(sum(D))
+    sumR = sum(sum(R))
+    sumL = sum(sum(L))
+	    
+    sums = [sumU, sumD, sumL, sumR]
+    best = max(sums)
+    bestmove = sums.index(best)    
+    
+    while (areEqual(board, moves[bestmove](board))):
+        sums[bestmove] = 0
+        best = max(sums)
+        bestmove = sums.index(best)
+	
+    return bestmove
+
+def areEqual(a, b):
+    for x in range(len(a)):
+        for y in range(len(a[x])):
+            if (a[x][y] != b[x][y]):
+>>>>>>> 510ae3ec61ccfc7d4abb73744119d89f5f4ad5a0
                 return False
     return True
 
